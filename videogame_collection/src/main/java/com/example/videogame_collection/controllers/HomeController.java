@@ -29,7 +29,7 @@ public class HomeController {
 		loginService.setUsername(username);
 		loginService.setPassword(password);
 		
-		boolean loggedIn = loginService.login();
+		boolean loggedIn = loginService.login(loginService.getUsername(), loginService.getPassword());
 		
 		if (loggedIn) {
 			return "redirect:/userHome";
