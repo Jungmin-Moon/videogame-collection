@@ -7,6 +7,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class LoginManager {
 
+	//used to set the session for the user
 	private String username;
 	
 	public String getUserName() {
