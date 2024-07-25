@@ -24,7 +24,7 @@ public class HomeController {
 	
 	
 	@PostMapping("home")
-	public String loginPost(@RequestParam String username, @RequestParam String password, Model model) {
+	public String loginPost(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String register, Model model) {
 		
 		loginService.setUsername(username);
 		loginService.setPassword(password);
@@ -35,8 +35,13 @@ public class HomeController {
 			return "redirect:/userHome";
 		}
 		
+		if (register != null) {
+			return "redirect:/register";
+		}
+		
 		model.addAttribute("message", "Wrong credentials or account doesn't exist.");
 		
 		return "home.html";
 	}
+	
 }
