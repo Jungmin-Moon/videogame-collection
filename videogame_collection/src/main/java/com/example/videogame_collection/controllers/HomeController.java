@@ -35,6 +35,8 @@ public class HomeController {
 			return "redirect:/userHome";
 		}
 		
+		model.addAttribute("message", "Wrong credentials or account doesn't exist.");
+		
 		return "home.html";
 	}
 }

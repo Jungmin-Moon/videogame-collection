@@ -5,6 +5,12 @@ import org.springframework.data.jdbc.repository.query.Query;
 public interface AccountRepository {
 
 	@Query("SELECT username FROM account where username = :username")
-	String getUserId(String username);
+	String getUsername(String username);
 	
+	@Query("SELECT password FROM account where username = :username")
+	String getPassword(String username);
+	
+	/*
+	@Query("SELECT username FROM account where username = :username && password := password")
+	String getUsernameFromLoginCred(String username, String password); */
 }
