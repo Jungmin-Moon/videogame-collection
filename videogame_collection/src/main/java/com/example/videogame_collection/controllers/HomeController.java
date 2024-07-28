@@ -18,30 +18,18 @@ public class HomeController {
 	}
 	
 	@GetMapping("home")
-	public String homeGet() {
-		return "home.html";
-	}
-	
-	
-	@PostMapping("home")
-	public String loginPost(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String register, Model model) {
+	public String homeGet(@RequestParam(required = false) String login, @RequestParam(required = false) String register) {
 		
-		loginService.setUsername(username);
-		loginService.setPassword(password);
-		
-		boolean loggedIn = loginService.login(loginService.getUsername(), loginService.getPassword());
-		
-		if (loggedIn) {
-			return "redirect:/userHome";
-		}
+		if (login != null) {
+			return "redirect:/login";
+		} 
 		
 		if (register != null) {
 			return "redirect:/register";
 		}
 		
-		model.addAttribute("message", "Wrong credentials or account doesn't exist.");
-		
 		return "home.html";
 	}
+	
 	
 }

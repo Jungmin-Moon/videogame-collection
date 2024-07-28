@@ -3,21 +3,17 @@
 
 <head>
 	<meta charset = "UTF-8">
-	<title>Login</title>
+	<title>Home</title>
 </head>
 
 <body>
-	<h1>Welcome to the home page.</h1><br />
-	<form action = "home" method = "post">
-		Username: <input type = "text" name = "username" /><br />
-		Password: <input type = "password" name = "password" /><br />
-		<button type = "submit">Log in</button>
-		<button type = "submit" formaction = "/home/register">Register</button>
-	</form>
-	
-	
-	<br /><br /><br />
-	<p th:text = "${message}"></p>
+	<div style = "text-align: center">
+		<h1>Welcome to the home page.</h1><br />
+	</div>
+	<div style = "text-align: center">
+		<a href = "/home?register">Register</a><br />
+		<a href = "/home?login">Login</a>
+	</div>
 </body>
 
 </html>
