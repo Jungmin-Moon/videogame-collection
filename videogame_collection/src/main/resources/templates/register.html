@@ -7,7 +7,16 @@
 </head>
 
 <body>
-	<h1>This is a test to see if it brings you here correctly from clicking register</h1>
+	<div>
+		<form action = "register" method = "post">
+			Username: <input type = "text" name = "username" /><br />
+			Password: <input type = "password" name = "password" /><br />
+			Re-Enter Password: <input type = "password" name = "passwordAgain" /><br />
+			<button type = "submit">Register</button>
+		</form>
+	</div>
+	
+	<p th:text = "${message}"></p>
 </body>
 
 
