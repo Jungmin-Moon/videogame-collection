@@ -10,6 +10,9 @@ public interface AccountRepository {
 	@Query("SELECT password FROM account where username = :username")
 	String getPassword(String username);
 	
+	@Query("INSERT INTO users (userId, username, password) VALUES (DEFAULT, :username, :password")
+	void addUser(String username, String password);
+	
 	/*
 	@Query("SELECT username FROM account where username = :username && password := password")
 	String getUsernameFromLoginCred(String username, String password); */
