@@ -25,7 +25,6 @@ public class RegistrationService {
 			hashedSaltedPass = passwordManager.genPasswordHash(password);
 			return hashedSaltedPass;
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		
@@ -46,5 +45,8 @@ public class RegistrationService {
 	}
 	
 	
+	public void createUser(String username, String password) {
+		accountRepository.addUser(username, password);
+	}
 	
 }
