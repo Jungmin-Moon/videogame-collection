@@ -27,8 +27,6 @@ public class LoginService {
 	
 	
 	public boolean login(String username, String password) {
-		//String serviceUsername = this.getUsername();
-		//String servicePassword = this.getPassword();
 		
 		boolean loginResult = false;
 		
