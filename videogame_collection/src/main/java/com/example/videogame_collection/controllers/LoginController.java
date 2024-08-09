@@ -26,8 +26,6 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public String loginPost(@RequestParam String username, @RequestParam String password, Model model) {
-		
-		
 		loginService.setUsername(username);
 		loginService.setPassword(password);
 		

@@ -40,6 +40,7 @@ public class LoginService {
 				
 				if (userExist != null) {
 					loginResult = true;
+					loginManager.setUsername(username);
 				}
 			}
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

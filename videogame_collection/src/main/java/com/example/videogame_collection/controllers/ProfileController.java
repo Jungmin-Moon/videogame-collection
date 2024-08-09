@@ -1,11 +1,13 @@
 package com.example.videogame_collection.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.videogame_collection.services.LoginManager;
 
+@Controller
 public class ProfileController {
 
 	
@@ -31,7 +33,7 @@ public class ProfileController {
 		}
 		
 		
-		
+		model.addAttribute("username", username);
 		return "profile.html";
 	}
 }
