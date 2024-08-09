@@ -3,8 +3,11 @@ package com.example.videogame_collection.services;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+import org.springframework.stereotype.Component;
+
 import com.example.videogame_collection.repositories.AccountRepository;
 
+@Component
 public class RegistrationService {
 	
 	PasswordManager passwordManager;

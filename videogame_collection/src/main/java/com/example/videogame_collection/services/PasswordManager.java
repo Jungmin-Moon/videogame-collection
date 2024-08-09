@@ -8,6 +8,9 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import org.springframework.stereotype.Component;
+
+@Component
 //purely to hash the password and salt it before storing it db
 public class PasswordManager {
 	

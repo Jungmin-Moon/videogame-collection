@@ -1,16 +1,21 @@
 package com.example.videogame_collection.repositories;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
+import org.springframework.data.repository.CrudRepository;
 
-public interface AccountRepository {
+import com.example.videogame_collection.model.Account;
 
-	@Query("SELECT username FROM account where username = :username")
+public interface AccountRepository extends CrudRepository<Account, Long>{
+
+	@Query("SELECT username FROM users where username = :username")
 	String getUsername(String username);
 	
-	@Query("SELECT password FROM account where username = :username")
+	@Query("SELECT password FROM users where username = :username")
 	String getPassword(String username);
 	
-	@Query("INSERT INTO users (userId, username, password) VALUES (DEFAULT, :username, :password")
+	@Modifying
+	@Query("INSERT INTO users (userID, username, password) VALUES (DEFAULT, :username, :password)")
 	void addUser(String username, String password);
 	
 	
