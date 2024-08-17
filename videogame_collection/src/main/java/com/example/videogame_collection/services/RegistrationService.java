@@ -6,16 +6,19 @@ import java.security.spec.InvalidKeySpecException;
 import org.springframework.stereotype.Component;
 
 import com.example.videogame_collection.repositories.AccountRepository;
+import com.example.videogame_collection.repositories.GamesRepository;
 
 @Component
 public class RegistrationService {
 	
 	PasswordManager passwordManager;
 	AccountRepository accountRepository;
+	GamesRepository gamesRepository;
 	
-	RegistrationService(PasswordManager passwordManager, AccountRepository accountRepository) {
+	RegistrationService(PasswordManager passwordManager, AccountRepository accountRepository, GamesRepository gamesRepository) {
 		this.passwordManager = passwordManager;
 		this.accountRepository = accountRepository;
+		this.gamesRepository = gamesRepository;
 	}
 	
 	/*
@@ -50,6 +53,10 @@ public class RegistrationService {
 	
 	public void createUser(String username, String password) {
 		accountRepository.addUser(username, password);
+	}
+	
+	public void createUserGameList(String username) {
+		gamesRepository.createUserGameList(username);
 	}
 	
 }
