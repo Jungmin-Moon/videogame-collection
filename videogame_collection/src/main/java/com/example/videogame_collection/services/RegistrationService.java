@@ -55,8 +55,4 @@ public class RegistrationService {
 		accountRepository.addUser(username, password);
 	}
 	
-	public void createUserGameList(String username) {
-		gamesRepository.createUserGameList(username);
-	}
-	
 }

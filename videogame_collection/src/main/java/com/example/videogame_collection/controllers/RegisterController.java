@@ -39,7 +39,6 @@ public class RegisterController {
 				model.addAttribute("message", "Username already exists. Please use a different name.");
 			} else {
 				registrationService.createUser(usernameHold, hashedSaltedPass);
-				registrationService.createUserGameList(usernameHold);
 				return "redirect:/home";
 			}
 			
