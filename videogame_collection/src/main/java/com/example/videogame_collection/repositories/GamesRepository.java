@@ -10,7 +10,7 @@ public interface GamesRepository extends CrudRepository<Game, Long>{
 	
 	@Modifying
 	@Query("INSERT INTO games (id, gameName, gameSystem, gameStatus, addedByUser) "
-			+ "VALUES (DEFAULT, :gameName, :gameSystem, :gameStatus, :username)")
-	void addGame(String gameName, String gameSystem, String gameStatus, String username);
+			+ "VALUES (DEFAULT, :name, :system, :status, :username)")
+	void addGame(String name, String system, String status, String username);
 
 }

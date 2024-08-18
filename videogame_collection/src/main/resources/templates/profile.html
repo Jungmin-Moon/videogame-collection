@@ -12,7 +12,24 @@
 	<div>
 		<h1>Welcome, <span th:text = "${username}"></span> to your list of games</h1>
 		
-		
+		<div>
+			<form action = "/profile" method = "post">
+				Game Name: <input type = "text" name = "name" />
+				System: <select id = "system" name = "system">
+							<option value = "PS5">PS5</option>
+							<option value = "PS4">PS4</option>
+							<option value = "Xbox One">Xbox One</option>
+							<option value = "Xbox Series X/S">Xbox Series X/S</option>
+							<option value = "Switch">Switch</option>
+							<option value = "PC">PC</option>
+						</select>
+				Status: <select id = "status" name = "status">
+							<option value = "In Progress">In Progress</option>
+							<option value = "Complete">Complete</option>
+						</select>
+				<button type = "submit">Add to your list</button>
+			</form>
+		</div>
 		
 		
 		
