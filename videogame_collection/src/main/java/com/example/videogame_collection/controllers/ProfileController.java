@@ -39,7 +39,7 @@ public class ProfileController {
 		
 		var games = gameService.getGames(username);
 		
-		System.out.println(games.get(1).getGameName());
+		//System.out.println(games.get(1).getGameName());
 		
 		model.addAttribute("username", username);
 		model.addAttribute("games", games); 
