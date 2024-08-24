@@ -4,6 +4,7 @@
 <head>
 	<meta charset = "UTF-8">
 	<title>Profile</title>
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/profile.css}"/>
 </head>
 
 
@@ -30,16 +31,26 @@
 				<button type = "submit">Add to your list</button>
 			</form>
 		</div>
+		<br />
 		<table>
-			<tr th:each = "game: ${games}">
-				<td th:text = "${game.gameName}"></td>
-				<td th:text = "${game.gameSystem}"></td>
-				<td th:text = "${game.gameStatus}"></td>
-			</tr>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>System</td>
+					<td>Status</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "game: ${games}">
+					<td th:text = "${game.gameName}"></td>
+					<td th:text = "${game.gameSystem}"></td>
+					<td th:text = "${game.gameStatus}"></td>
+				</tr>
+			</tbody>
 		</table>
 		
 		
-		
+		<br />
 		<a href = "/profile?logout">Log out</a>
 	</div>
 </body>
