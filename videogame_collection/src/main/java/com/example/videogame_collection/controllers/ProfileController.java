@@ -24,7 +24,7 @@ public class ProfileController {
 	
 	@GetMapping("/profile")
 	//@RequestMapping(value = "/profile", method = {RequestMethod.PUT, RequestMethod.GET})
-	public String profile(@RequestParam(required = false) String logout, Model model) {
+	public String profile(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -35,6 +35,10 @@ public class ProfileController {
 		
 		if (username == null) {
 			return "redirect:/home";
+		}
+		
+		if (modify != null) {
+			return "redirect:/modify";
 		}
 		
 		var games = gameService.getGames(username);
@@ -49,7 +53,21 @@ public class ProfileController {
 	
 	@PostMapping("/profile")
 	public String addGames(@RequestParam String gameName, @RequestParam String gameSystem, @RequestParam String gameStatus, 
-						@RequestParam(required = false) String logout, Model model) {
+						@RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
+		
+		if (logout != null) {
+			loginManager.setUsername(null);
+		}
+		
+		String username = loginManager.getUserName();
+		
+		if (username == null) {
+			return "redirect:/home";
+		}
+		
+		if (modify != null) {
+			return "redirect:/modify";
+		}
 		
 		gameService.addGame(gameName, gameSystem, gameStatus, loginManager.getUserName());
 		
