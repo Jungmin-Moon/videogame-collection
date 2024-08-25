@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "https://www.thymeleaf.org">
+
+<head>
+	<meta charset = "UTF-8">
+	<title>Modification Page</title>
+	<link rel = "stylesheet" type = "text/css" th:href = "@{/css/modify.css}"/>
+</head>
+
+<body>
+	<h1>Update your games here, <span th:text = "${username}"></span></h1>
+	
+	<br />
+	
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>System</td>
+				<td>Status</td>
+				<td>Update</td>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each = "gameModify: ${games}">
+				<form action = "modify" method = "post">
+				<td th:text = "${gameModify.gameName}></td>
+				<td th:text = "${gameModify.gameSystem}></td>
+				<td th:text = "${gameModify.gameStatus}></td>
+				<button type = "submit">Modify</button>
+				</form>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+
+
+</html>
