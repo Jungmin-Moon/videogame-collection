@@ -33,6 +33,10 @@ public class ModifyController {
 			return "redirect:/home";
 		}
 		
+		if (back != null) {
+			return "redirect:/profile";
+		}
+		
 		var games = gameService.getGames(username);
 		
 		model.addAttribute("username", username);
@@ -43,8 +47,22 @@ public class ModifyController {
 	
 	
 	@PostMapping("/modify") 
-	public String modifyPost() {
+	public String modifyPost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
+		if (logout != null) {
+			loginManager.setUsername(null);
+		}
 		
+		String username = loginManager.getUserName();
+		
+		if (username == null) {
+			return "redirect:/home";
+		}
+		
+		if (back != null) {
+			return "redirect:/profile";
+		}
+		
+		//need to get the params from the button hit and manipulate the data that way then redirect back to profile.
 		
 		return "redirect:/profile";
 	}
