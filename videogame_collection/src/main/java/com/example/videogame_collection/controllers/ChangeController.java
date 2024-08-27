@@ -21,9 +21,8 @@ public class ChangeController {
 	
 	
 	@GetMapping("/change/{gameName}")
-	@ResponseBody
 	public String changeGet(@PathVariable String gameName, @RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
-		/*
+		
 		if (logout != null) {
 			loginManager.setUsername(null);
 		}
@@ -36,10 +35,14 @@ public class ChangeController {
 		
 		if (back != null) {
 			return "redirect:/profile";
-		} */
+		} 
 		
+		model.addAttribute("username", username);
 		System.out.println(gameName);
 		
-		return "change/{test}";
+		//Need to make it so in cases of games like Fate_Samurai_Remnant gets transformed back to how they were before becoming 
+		//url friendly
+		
+		return "change.html";
 	}
 }

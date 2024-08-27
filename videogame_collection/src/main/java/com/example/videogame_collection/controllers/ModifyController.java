@@ -67,8 +67,8 @@ public class ModifyController {
 		//System.out.println(gameName);
 		//need to get the params from the button hit and manipulate the data that way then redirect back to profile.
 		StringBuffer sB = new StringBuffer("redirect:/change");
-		String test = gameName.replaceAll("\\s+", "_");
-		return sB.append("/").append(test).toString();
+		String gameNameWithUnderscore = gameName.replaceAll("\\W", "_");
+		return sB.append("/").append(gameNameWithUnderscore).toString();
 	}
 
 }
