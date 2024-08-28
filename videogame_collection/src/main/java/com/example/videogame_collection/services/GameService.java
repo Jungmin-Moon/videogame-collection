@@ -35,4 +35,8 @@ public class GameService {
 		public GameDTO convertToDTO(Game g) {
 			return new GameDTO(g.getid(), g.getGameName(), g.getGameSystem(), g.getGameStatus(), g.getAddedByUser());
 		}
+		
+		public int getId(String name) {
+			return gamesRepository.getId(name);
+		}
 }

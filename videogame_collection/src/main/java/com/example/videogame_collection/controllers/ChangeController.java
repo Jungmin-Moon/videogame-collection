@@ -20,8 +20,8 @@ public class ChangeController {
 	private GameService gameService;
 	
 	
-	@GetMapping("/change/{gameName}")
-	public String changeGet(@PathVariable String gameName, @RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
+	@GetMapping("/change/{gameName}/{gameID}")
+	public String changeGet(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
