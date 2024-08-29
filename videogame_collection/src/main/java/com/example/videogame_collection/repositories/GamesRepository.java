@@ -21,4 +21,7 @@ public interface GamesRepository extends ListCrudRepository<Game, Long>{
 	
 	@Query("SELECT id FROM games where game_Name = :name")
 	int getId(String name);
+	
+	@Query("SELECT * FROM games where id = :id")
+	Game getGame(int id);
 }

@@ -27,6 +27,11 @@ public class GameService {
 			return games;
 		}
 		
+		public GameDTO getGame(int id) {
+			Game temp = gamesRepository.getGame(id);
+			return new GameDTO(temp.getid(), temp.getGameName(), temp.getGameSystem(), temp.getGameStatus(), temp.getAddedByUser());
+		}
+		
 		public void addGame(String name, String System, String status, String username) {
 			gamesRepository.addGame(name, System, status, username);
 		}

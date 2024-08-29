@@ -37,8 +37,12 @@ public class ChangeController {
 			return "redirect:/profile";
 		} 
 		
+		var game = gameService.getGame(gameID);
+		
 		model.addAttribute("username", username);
+		model.addAttribute("games", game);
 		System.out.println(gameName);
+		System.out.println(gameID);
 		
 		//Need to make it so in cases of games like Fate_Samurai_Remnant gets transformed back to how they were before becoming 
 		//url friendly
