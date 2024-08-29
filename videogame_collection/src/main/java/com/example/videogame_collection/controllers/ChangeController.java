@@ -39,6 +39,8 @@ public class ChangeController {
 		
 		var game = gameService.getGame(gameID);
 		
+		
+	
 		model.addAttribute("username", username);
 		model.addAttribute("games", game);
 		
