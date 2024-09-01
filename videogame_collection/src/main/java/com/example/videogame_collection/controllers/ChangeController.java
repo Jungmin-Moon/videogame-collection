@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.videogame_collection.services.GameService;
 import com.example.videogame_collection.services.LoginManager;
@@ -34,7 +34,7 @@ public class ChangeController {
 		}
 		
 		if (back != null) {
-			return "redirect:/profile";
+			return "redirect:/modify";
 		} 
 		
 		var game = gameService.getGame(gameID);
@@ -46,5 +46,35 @@ public class ChangeController {
 		
 		
 		return "change.html";
+	}
+	
+	
+	@PostMapping("/change/{gameName}/{gameID}")
+	public String changePost(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String back,
+							@RequestParam String gName, @RequestParam String gameSystem, @RequestParam String gameStatus) {
+		
+		if (logout != null) {
+			loginManager.setUsername(null);
+		}
+		
+		String username = loginManager.getUserName();
+		
+		if (username == null) {
+			return "redirect:/home";
+		}
+		
+		if (back != null) {
+			return "redirect:modify";
+		}
+		
+		var game = gameService.getGame(gameID);
+		
+		String tempGameName = gName;
+		String tempGameSystem = gameSystem;
+		String tempGameStatus = gameStatus;
+		
+		//need a filler method to compare which aspects need to be updated
+		
+		return "redirect:/profile";
 	}
 }

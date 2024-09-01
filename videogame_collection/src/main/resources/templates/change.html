@@ -23,8 +23,30 @@
 	</table>
 	
 	<br />
+	<br />
+	<br />
 	
 	
+	<form action = "/change" method = "post">
+		Game Name: <input type = "text" name = "gameName" />
+		System: <select id = "system" name = "gameSystem">
+					<option value = "PS5">PS5</option>
+					<option value = "PS4">PS4</option>
+					<option value = "Xbox One">Xbox One</option>
+					<option value = "Xbox Series X/S">Xbox Series X/S</option>
+					<option value = "Switch">Switch</option>
+					<option value = "PC">PC</option>
+				</select>
+		Status: <select id = "status" name = "gameStatus">
+					<option value = "In Progress">In Progress</option>
+					<option value = "Complete">Complete</option>
+				</select>
+		<button type = "submit">Update</button>
+	</form>
+	
+	<br />
+	<br />
+	<a href = "/profile?logout">Log out</a>
 </body>
 
 
