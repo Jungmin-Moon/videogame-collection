@@ -25,10 +25,11 @@ public interface GamesRepository extends ListCrudRepository<Game, Long>{
 	@Query("SELECT * FROM games where id = :id")
 	Game getGame(int id);
 	
-	
+	//unneeded
+	/*
 	@Modifying
 	@Query("UPDATE games SET game_Name = :name, game_System = :system, game_Status = :status WHERE id = :id")
-	void updateAll(int id, String name, String system, String status);
+	void updateAll(int id, String name, String system, String status); */
 	
 	@Modifying
 	@Query("UPDATE games SET game_Name = :name WHERE id = :id")

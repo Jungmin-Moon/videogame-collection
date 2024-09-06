@@ -47,7 +47,6 @@ public class ChangeController {
 		model.addAttribute("username", username);
 		model.addAttribute("games", game);
 		
-		//System.out.println(game);
 		return "change.html";
 	}
 	
@@ -70,12 +69,10 @@ public class ChangeController {
 			return "redirect:modify";
 		}
 		
-		//System.out.println(game);
 		
-		/*
 		String tempGameName = gName;
 		String tempGameSystem = gameSystem;
-		String tempGameStatus = gameStatus; */
+		String tempGameStatus = gameStatus;
 		
 		//need a filler method to compare which aspects need to be updated
 		
