@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.videogame_collection.dto.GameDTO;
 import com.example.videogame_collection.services.GameService;
 import com.example.videogame_collection.services.LoginManager;
 
@@ -18,6 +19,8 @@ public class ChangeController {
 	
 	@Autowired
 	private GameService gameService;
+	
+	private GameDTO game;
 	
 	
 	@GetMapping("/change/{gameName}/{gameID}")
@@ -37,20 +40,20 @@ public class ChangeController {
 			return "redirect:/modify";
 		} 
 		
-		var game = gameService.getGame(gameID);
+		game = gameService.getGame(gameID);
 		
 		
 	
 		model.addAttribute("username", username);
 		model.addAttribute("games", game);
 		
-		
+		//System.out.println(game);
 		return "change.html";
 	}
 	
 	
-	@PostMapping("/change/{gameName}/{gameID}")
-	public String changePost(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String back,
+	@PostMapping("/change")
+	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back,
 							@RequestParam String gName, @RequestParam String gameSystem, @RequestParam String gameStatus) {
 		
 		if (logout != null) {
@@ -67,11 +70,12 @@ public class ChangeController {
 			return "redirect:modify";
 		}
 		
-		var game = gameService.getGame(gameID);
+		//System.out.println(game);
 		
+		/*
 		String tempGameName = gName;
 		String tempGameSystem = gameSystem;
-		String tempGameStatus = gameStatus;
+		String tempGameStatus = gameStatus; */
 		
 		//need a filler method to compare which aspects need to be updated
 		
