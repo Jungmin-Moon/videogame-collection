@@ -45,15 +45,15 @@ public class GameService {
 			return gamesRepository.getId(name);
 		}
 		
-		public void updateName(int id, String newName) {
+		public void updateName(long id, String newName) {
 			gamesRepository.updateName(id, newName);
 		}
 		
-		public void updateSystem(int id, String newSystem) {
+		public void updateSystem(long id, String newSystem) {
 			gamesRepository.updateSystem(id, newSystem);
 		}
 		
-		public void updateStatus(int id, String newStatus) {
+		public void updateStatus(long id, String newStatus) {
 			gamesRepository.updateStatus(id, newStatus);
 		}
 }

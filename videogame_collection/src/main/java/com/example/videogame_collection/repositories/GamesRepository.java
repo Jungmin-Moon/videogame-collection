@@ -33,13 +33,13 @@ public interface GamesRepository extends ListCrudRepository<Game, Long>{
 	
 	@Modifying
 	@Query("UPDATE games SET game_Name = :name WHERE id = :id")
-	void updateName(int id, String name);
+	void updateName(long id, String name);
 	
 	@Modifying
 	@Query("UPDATE games SET game_System = :system WHERE id = :id")
-	void updateSystem(int id, String system);
+	void updateSystem(long id, String system);
 	
 	@Modifying
 	@Query("UPDATE games SET game_Status = :status WHERE id = :id")
-	void updateStatus(int id, String status);
+	void updateStatus(long id, String status);
 }

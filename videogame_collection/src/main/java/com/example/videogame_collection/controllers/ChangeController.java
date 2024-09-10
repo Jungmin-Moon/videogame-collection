@@ -78,18 +78,68 @@ public class ChangeController {
 		String tempGameSystem = gameSystem;
 		String tempGameStatus = gameStatus;
 		
+		//this feels terrible to do
 		if (checkEmpty(tempGameName)) {
 			
 			if (dataComparisonService.compareSystem(game.getGameSystem(), tempGameSystem)) {
 				
-				
+				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
+					
+					//do something when no changes needed
+					
+				} else {
+					
+					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+				}
 				
 			} else {
 				
+				//if the game systems are not the same
+				gameService.updateSystem(game.getid(), tempGameSystem);
+				
+				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
+					
+					//do something when no changes needed
+					
+				} else {
+					
+					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+				}
 			}
 			
 		} else {
-			model.addAttribute("checkNameChange", "Do you want to change the name to: " + tempGameName);
+			
+			gameService.updateName(game.getid(), tempGameName);
+			
+			if (dataComparisonService.compareSystem(game.getGameSystem(), tempGameSystem)) {
+				
+				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
+					
+					//do something when no changes needed
+					
+				} else {
+					
+					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+				}
+				
+			} else {
+				
+				//if the game systems are not the same
+				gameService.updateSystem(game.getid(), tempGameSystem);
+				
+				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
+					
+					//do something when no changes needed
+					
+				} else {
+					
+					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+				}
+			}
 		}
 		
 		
