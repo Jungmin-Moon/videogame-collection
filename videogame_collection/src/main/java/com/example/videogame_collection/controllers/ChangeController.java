@@ -70,7 +70,7 @@ public class ChangeController {
 		}
 		
 		if (back != null) {
-			return "redirect:modify";
+			return "redirect:/modify";
 		}
 		
 		
