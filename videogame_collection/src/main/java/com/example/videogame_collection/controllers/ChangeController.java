@@ -85,12 +85,12 @@ public class ChangeController {
 				
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
-					//do something when no changes needed
+					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
-					
+					return "change.html";
 				}
 				
 			} else {
@@ -101,11 +101,12 @@ public class ChangeController {
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
-					
+					return "change.html";
 				}
 			}
 			
@@ -118,11 +119,12 @@ public class ChangeController {
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
-					
+					return "change.html";
 				}
 				
 			} else {
@@ -133,18 +135,19 @@ public class ChangeController {
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
-					
+					return "change.html";
 				}
 			}
 		}
 		
 		
 		
-		return "redirect:/profile";
+		//return "redirect:/profile";
 	}
 	
 	
