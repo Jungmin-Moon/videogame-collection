@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.videogame_collection.dto.GameDTO;
+import com.example.videogame_collection.services.DataComparisonService;
 import com.example.videogame_collection.services.GameService;
 import com.example.videogame_collection.services.LoginManager;
 
@@ -19,6 +20,9 @@ public class ChangeController {
 	
 	@Autowired
 	private GameService gameService;
+	
+	@Autowired
+	private DataComparisonService dataComparisonService;
 	
 	private GameDTO game;
 	
@@ -53,7 +57,7 @@ public class ChangeController {
 	
 	@PostMapping("/change")
 	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back,
-							@RequestParam String gName, @RequestParam String gameSystem, @RequestParam String gameStatus) {
+							@RequestParam String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -74,8 +78,28 @@ public class ChangeController {
 		String tempGameSystem = gameSystem;
 		String tempGameStatus = gameStatus;
 		
-		//need a filler method to compare which aspects need to be updated
+		if (checkEmpty(tempGameName)) {
+			
+			if (dataComparisonService.compareSystem(game.getGameSystem(), tempGameSystem)) {
+				
+				
+				
+			} else {
+				
+			}
+			
+		} else {
+			model.addAttribute("checkNameChange", "Do you want to change the name to: " + tempGameName);
+		}
+		
+		
 		
 		return "redirect:/profile";
 	}
+	
+	
+	private boolean checkEmpty(String name) {
+		return name.isEmpty();
+	}
+
 }

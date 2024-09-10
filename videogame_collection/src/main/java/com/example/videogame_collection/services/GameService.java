@@ -44,4 +44,16 @@ public class GameService {
 		public int getId(String name) {
 			return gamesRepository.getId(name);
 		}
+		
+		public void updateName(int id, String newName) {
+			gamesRepository.updateName(id, newName);
+		}
+		
+		public void updateSystem(int id, String newSystem) {
+			gamesRepository.updateSystem(id, newSystem);
+		}
+		
+		public void updateStatus(int id, String newStatus) {
+			gamesRepository.updateStatus(id, newStatus);
+		}
 }
