@@ -1,5 +1,6 @@
 package com.example.videogame_collection.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,13 @@ import com.example.videogame_collection.services.RegistrationService;
 @Controller
 public class RegisterController {
 	
-	RegistrationService registrationService;
+	@Autowired
+	private RegistrationService registrationService;
 	
+	/*
 	RegisterController(RegistrationService registrationService) {
 		this.registrationService = registrationService;
-	}
+	} */
 	
 	@GetMapping("/register")
 	public String register() {

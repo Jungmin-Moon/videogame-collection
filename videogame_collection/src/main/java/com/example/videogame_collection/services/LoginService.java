@@ -4,11 +4,13 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 
 import com.example.videogame_collection.repositories.AccountRepository;
 
 @Component
+@Service
 @RequestScope
 public class LoginService {
 
