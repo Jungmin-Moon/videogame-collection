@@ -74,6 +74,10 @@ public class ChangeController {
 		}
 		
 		
+		String oldName = game.getGameName();
+		String oldSystem = game.getGameSystem();
+		String oldStatus = game.getGameStatus();
+		
 		String tempGameName = gName;
 		String tempGameSystem = gameSystem;
 		String tempGameStatus = gameStatus;
@@ -81,15 +85,26 @@ public class ChangeController {
 		//this feels terrible to do
 		if (checkEmpty(tempGameName)) {
 			
+			//empty string no changes needed
+			model.addAttribute("nameChange", "There were no changes to the name.");
+			
 			if (dataComparisonService.compareSystem(game.getGameSystem(), tempGameSystem)) {
+				
+				//no change to the system
+				model.addAttribute("systemChange", "There were no changes to the system.");
 				
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
+					//no changes at all
+					model.addAttribute("statusChange", "There were no changes to the status.");
+					model.addAttribute("noChange", "There were no changes to be made.");
 					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+					model.addAttribute("statusChange", "Status for game was changed from: " + oldStatus + " to " + tempGameStatus);
 					return "change.html";
 				}
 				
@@ -97,15 +112,19 @@ public class ChangeController {
 				
 				//if the game systems are not the same
 				gameService.updateSystem(game.getid(), tempGameSystem);
+				model.addAttribute("systemChange", "The system for the game was changed from: " + oldSystem + " to " + tempGameSystem);
 				
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					model.addAttribute("statusChange", "There were no changes to the status.");
 					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
+					
+					model.addAttribute("statusChange", "Status for game was changed from: " + oldStatus + " to " + tempGameStatus);
 					return "change.html";
 				}
 			}
@@ -113,17 +132,27 @@ public class ChangeController {
 		} else {
 			
 			gameService.updateName(game.getid(), tempGameName);
+			model.addAttribute("nameChange", "Name for the game was changed from: " + oldName + " to " + tempGameName);
 			
 			if (dataComparisonService.compareSystem(game.getGameSystem(), tempGameSystem)) {
+				
+				model.addAttribute("systemChange", "There were no changes to the system.");
+				
 				
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					model.addAttribute("statusChange", "There were no changes to the status.");
+					
+					model.addAttribute("noChange", "There were no changes to be made.");
+					
 					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
+					model.addAttribute("statusChange", "Status for game was changed from: " + oldStatus + " to " + tempGameStatus);
+					
 					return "change.html";
 				}
 				
@@ -131,23 +160,25 @@ public class ChangeController {
 				
 				//if the game systems are not the same
 				gameService.updateSystem(game.getid(), tempGameSystem);
+				model.addAttribute("systemChange", "The system for the game was changed from: " + oldSystem + " to " + tempGameSystem);
+				
 				
 				if (dataComparisonService.compareStatus(game.getGameStatus(), tempGameStatus)) {
 					
 					//do something when no changes needed
+					model.addAttribute("statusChange", "There were no changes to the status.");
+					
 					return "change.html";
 					
 				} else {
 					
 					gameService.updateStatus(game.getid(), tempGameStatus);
+					model.addAttribute("statusChange", "Status for game was changed from: " + oldStatus + " to " + tempGameStatus);
+					
 					return "change.html";
 				}
 			}
 		}
-		
-		
-		
-		//return "redirect:/profile";
 	}
 	
 	
