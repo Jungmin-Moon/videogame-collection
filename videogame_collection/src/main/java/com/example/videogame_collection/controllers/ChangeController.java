@@ -24,6 +24,7 @@ public class ChangeController {
 	@Autowired
 	private DataComparisonService dataComparisonService;
 	
+	@Autowired
 	private GameDTO game;
 	
 	
