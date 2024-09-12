@@ -83,6 +83,8 @@ public class ChangeController {
 		String tempGameSystem = gameSystem;
 		String tempGameStatus = gameStatus;
 		
+		model.addAttribute("username", username);
+		
 		//this feels terrible to do
 		if (checkNull(tempGameName)) {
 			
