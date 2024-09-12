@@ -84,7 +84,7 @@ public class ChangeController {
 		String tempGameStatus = gameStatus;
 		
 		//this feels terrible to do
-		if (checkEmpty(tempGameName)) {
+		if (checkNull(tempGameName)) {
 			
 			//empty string no changes needed
 			model.addAttribute("nameChange", "There were no changes to the name.");
@@ -183,8 +183,8 @@ public class ChangeController {
 	}
 	
 	
-	private boolean checkEmpty(String name) {
-		return name.isEmpty();
+	private boolean checkNull(String name) {
+		return name == null;
 	}
 
 }
