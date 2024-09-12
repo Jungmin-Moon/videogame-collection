@@ -58,7 +58,7 @@ public class ChangeController {
 	
 	@PostMapping("/change")
 	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back,
-							@RequestParam String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
+							@RequestParam(required = false) String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);

@@ -1,14 +1,20 @@
 package com.example.videogame_collection.dto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class GameDTO {
-	private long id;
+	private int id;
 	private String gameName;
 	private String gameSystem;
 	private String gameStatus;
 	private String addedByUser;
 	
+	public GameDTO() {
+		
+	}
 	
-	public GameDTO(long id, String gameName, String gameSystem, String gameStatus, String addedByUser) {
+	public GameDTO(int id, String gameName, String gameSystem, String gameStatus, String addedByUser) {
 		this.id = id;
 		this.gameName = gameName;
 		this.gameSystem = gameSystem;
@@ -16,11 +22,11 @@ public class GameDTO {
 		this.addedByUser = addedByUser;
 	}
 
-	public long getid() {
+	public int getid() {
 		return id;
 	}
 
-	public void setid(long id) {
+	public void setid(int id) {
 		this.id = id;
 	}
 

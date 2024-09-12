@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.stereotype.Component;
 
 import com.example.videogame_collection.model.Game;
 
-public interface GamesRepository extends ListCrudRepository<Game, Long>{
+//@Component
+public interface GamesRepository extends ListCrudRepository<Game, Integer>{
 	
 	@Modifying
 	@Query("INSERT INTO games (id, game_Name, game_System, game_Status, added_By_User) "
@@ -33,13 +35,13 @@ public interface GamesRepository extends ListCrudRepository<Game, Long>{
 	
 	@Modifying
 	@Query("UPDATE games SET game_Name = :name WHERE id = :id")
-	void updateName(long id, String name);
+	void updateName(int id, String name);
 	
 	@Modifying
 	@Query("UPDATE games SET game_System = :system WHERE id = :id")
-	void updateSystem(long id, String system);
+	void updateSystem(int id, String system);
 	
 	@Modifying
 	@Query("UPDATE games SET game_Status = :status WHERE id = :id")
-	void updateStatus(long id, String status);
+	void updateStatus(int id, String status);
 }

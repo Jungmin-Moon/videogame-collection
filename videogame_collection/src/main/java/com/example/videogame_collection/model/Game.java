@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 
 public class Game {
 	@Id
-	private long id;
+	private int id;
 	
 	private String gameName;
 
@@ -13,10 +13,10 @@ public class Game {
 	private String gameStatus;
 	private String addedByUser;
 	
-	public long getid() {
+	public int getid() {
 		return id;
 	}
-	public void setid(long id) {
+	public void setid(int id) {
 		this.id = id;
 	}
 	public String getGameName() {
