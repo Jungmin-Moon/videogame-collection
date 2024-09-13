@@ -28,7 +28,7 @@ public class ChangeController {
 	
 	
 	@GetMapping("/change/{gameName}/{gameID}")
-	public String changeGet(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
+	public String changeGet(@PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -52,10 +52,8 @@ public class ChangeController {
 		return "change.html";
 	}
 	
-	
-	@PostMapping("/change")
-	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify,
-							@RequestParam(required = false) String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
+	@GetMapping("/change") 
+	public String changeGetNormal(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -68,6 +66,33 @@ public class ChangeController {
 		}
 		
 		if (modify != null) {
+			return "redirect:/modify";
+		}
+		
+		model.addAttribute("username", username);
+		model.addAttribute("games", game);
+		
+		return "change.html";
+	}
+	
+	
+	@PostMapping("/change")
+	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify,
+							@RequestParam(required = false) String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
+		
+		if (logout != null) {
+			loginManager.setUsername(null);
+		}
+		
+		String username = loginManager.getUserName();
+		
+		if (username == null) {
+			game = null;
+			return "redirect:/home";
+		}
+		
+		if (modify != null) {
+			game = null;
 			return "redirect:/modify";
 		}
 		

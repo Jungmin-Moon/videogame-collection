@@ -21,7 +21,7 @@ public class ModifyController {
 	
 	
 	@GetMapping("/modify")
-	public String modifyGet(@RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
+	public String modifyGet(@RequestParam(required = false) String logout, @RequestParam(required = false) String profile, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -33,21 +33,21 @@ public class ModifyController {
 			return "redirect:/home";
 		}
 		
-		if (back != null) {
+		if (profile != null) {
 			return "redirect:/profile";
 		}
 		
-		var games = gameService.getGames(username);
+		var gamesList = gameService.getGames(username);
 		
 		model.addAttribute("username", username);
-		model.addAttribute("games", games); 
+		model.addAttribute("games", gamesList); 
 		
 		return "modify.html";
 	}
 	
 	
 	@PostMapping("/modify") 
-	public String modifyPost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back, 
+	public String modifyPost(@RequestParam(required = false) String logout, @RequestParam(required = false) String profile, 
 							@RequestParam String gameName, Model model) {
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -59,7 +59,7 @@ public class ModifyController {
 			return "redirect:/home";
 		}
 		
-		if (back != null) {
+		if (profile != null) {
 			return "redirect:/profile";
 		}
 		

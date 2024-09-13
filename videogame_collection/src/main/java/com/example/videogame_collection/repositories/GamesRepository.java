@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.ListCrudRepository;
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 
 import com.example.videogame_collection.model.Game;
 
