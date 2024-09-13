@@ -24,12 +24,11 @@ public class ChangeController {
 	@Autowired
 	private DataComparisonService dataComparisonService;
 	
-	@Autowired
 	private GameDTO game;
 	
 	
 	@GetMapping("/change/{gameName}/{gameID}")
-	public String changeGet(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String back, Model model) {
+	public String changeGet(@PathVariable String gameName, @PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
 		
 		if (logout != null) {
 			loginManager.setUsername(null);
@@ -41,14 +40,12 @@ public class ChangeController {
 			return "redirect:/home";
 		}
 		
-		if (back != null) {
+		if (modify != null) {
 			return "redirect:/modify";
 		} 
 		
 		game = gameService.getGame(gameID);
 		
-		
-	
 		model.addAttribute("username", username);
 		model.addAttribute("games", game);
 		
@@ -57,7 +54,7 @@ public class ChangeController {
 	
 	
 	@PostMapping("/change")
-	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String back,
+	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify,
 							@RequestParam(required = false) String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
 		
 		if (logout != null) {
@@ -70,7 +67,7 @@ public class ChangeController {
 			return "redirect:/home";
 		}
 		
-		if (back != null) {
+		if (modify != null) {
 			return "redirect:/modify";
 		}
 		

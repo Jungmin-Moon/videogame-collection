@@ -18,7 +18,7 @@ public class HomeController {
 		this.loginService = loginService;
 	} */
 	
-	@GetMapping("home")
+	@GetMapping("/home")
 	public String homeGet(@RequestParam(required = false) String login, @RequestParam(required = false) String register) {
 		
 		if (login != null) {
