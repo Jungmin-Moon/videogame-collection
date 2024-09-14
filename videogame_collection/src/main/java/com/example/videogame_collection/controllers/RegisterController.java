@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.videogame_collection.services.LoginManager;
 import com.example.videogame_collection.services.RegistrationService;
 
 @Controller
@@ -21,7 +22,16 @@ public class RegisterController {
 	} */
 	
 	@GetMapping("/register")
-	public String register() {
+	public String register(@RequestParam(required = false) String back, @RequestParam(required = false) String login) {
+		
+		if (back != null) {
+			return "redirect:/home";
+		}
+		
+		if (login != null) {
+			return "redirect:/login";
+		}
+		
 		return "register.html";
 	}
 	

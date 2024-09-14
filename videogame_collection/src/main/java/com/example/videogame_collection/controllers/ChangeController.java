@@ -29,20 +29,7 @@ public class ChangeController {
 	
 	@GetMapping("/change/{gameName}/{gameID}")
 	public String changeGet(@PathVariable int gameID, @RequestParam(required = false) String logout, @RequestParam(required = false) String modify, Model model) {
-		
-		if (logout != null) {
-			loginManager.setUsername(null);
-		}
-		
 		String username = loginManager.getUserName();
-		
-		if (username == null) {
-			return "redirect:/home";
-		}
-		
-		if (modify != null) {
-			return "redirect:/modify";
-		} 
 		
 		game = gameService.getGame(gameID);
 		
@@ -79,23 +66,8 @@ public class ChangeController {
 	@PostMapping("/change")
 	public String changePost(@RequestParam(required = false) String logout, @RequestParam(required = false) String modify,
 							@RequestParam(required = false) String gName, @RequestParam String gameSystem, @RequestParam String gameStatus, Model model) {
-		
-		if (logout != null) {
-			loginManager.setUsername(null);
-		}
-		
-		String username = loginManager.getUserName();
-		
-		if (username == null) {
-			game = null;
-			return "redirect:/home";
-		}
-		
-		if (modify != null) {
-			game = null;
-			return "redirect:/modify";
-		}
-		
+
+		String username = loginManager.getUserName();		
 		
 		String oldName = game.getGameName();
 		String oldSystem = game.getGameSystem();
@@ -106,6 +78,7 @@ public class ChangeController {
 		String tempGameStatus = gameStatus;
 		
 		model.addAttribute("username", username);
+		model.addAttribute("games", game);
 		
 		//this feels terrible to do
 		if (checkNull(tempGameName)) {

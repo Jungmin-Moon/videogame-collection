@@ -19,6 +19,7 @@ public class LoginController {
 	LoginController(LoginService loginService) {
 		this.loginService = loginService;
 	} */
+	//need to handle more issues with logging in and add ways to go back
 	
 	@GetMapping("/login")
 	public String login() {
