@@ -22,7 +22,12 @@ public class LoginController {
 	//need to handle more issues with logging in and add ways to go back
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(@RequestParam(required = false) String back) {
+		
+		if (back != null) {
+			return "redirect:/home";
+		}
+		
 		return "login.html";
 	}
 	
