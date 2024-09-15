@@ -45,6 +45,7 @@ public class RegisterController {
 		String passwordHold = password;
 		String passwordHold2 = passwordAgain;
 		
+		
 		if (registrationService.passwordSame(passwordHold, passwordHold2)) {
 			String hashedSaltedPass = registrationService.generateHashSaltPass(passwordHold);
 			
@@ -58,7 +59,6 @@ public class RegisterController {
 		} else {
 			model.addAttribute("message", "Passwords do not match.");
 		}
-		
 		
 		
 		return "register.html";

@@ -14,9 +14,9 @@ import com.example.videogame_collection.repositories.AccountRepository;
 @RequestScope
 public class LoginService {
 
-	private final LoginManager loginManager;
-	private final AccountRepository accountRepository;
-	private final PasswordManager passwordManager;
+	private LoginManager loginManager;
+	private AccountRepository accountRepository;
+	private PasswordManager passwordManager;
 	
 	private String username;
 	private String password;
@@ -31,23 +31,29 @@ public class LoginService {
 	public boolean login(String username, String password) {
 		
 		boolean loginResult = false;
+
+		String userExist = accountRepository.getUsername(username);
 		
-		String storedPass = accountRepository.getPassword(username);
-		
-		try {
-			if (passwordManager.validatePassword(password, storedPass)) {
-				String userExist = accountRepository.getUsername(username);
+		if (userExist != null) {
+			
+			String storedPass = accountRepository.getPassword(username);
+			
+			try {
 				
-				if (userExist != null) {
+				if (passwordManager.validatePassword(password, storedPass)) {
 					loginResult = true;
 					loginManager.setUsername(username);
 				}
+				
+			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+				e.printStackTrace();
 			}
-		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+		} else {
+			
+			loginResult = false;
+			
 		}
-		
 		
 		return loginResult;
 	}
